@@ -7,11 +7,11 @@ eureka:
   instance:
     hostname: localhost
 datasource:
-   url: jdbc:mysql://localhost:3306/shoping?useSSL=false
-   username: root
-   password: P@ssw0rd
-   hikari:
-     maximum-pool-size: 50
+  url: jdbc:mysql://localhost:3306/shoping?useSSL=false
+  username: root
+  password: P@ssw0rd
+  hikari:
+    maximum-pool-size: 50
 jpa:
   show-sql: false
   properties:
@@ -21,7 +21,7 @@ jpa:
       proc:
         param_null_passing: true
   hibernate:
-    ddl-auto: update
+    ddl-auto: none
     use_sql_comments: true
     format_sql: true
     
