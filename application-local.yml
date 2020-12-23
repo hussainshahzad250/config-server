@@ -1,0 +1,97 @@
+spring.profiles: local
+logging:
+  level:
+    com:
+      scnl:
+        hcms:
+          hris: DEBUG
+  file: Log\myLog.log
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%X{CORRELATION_ID}] -%msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%X{CORRELATION_ID}] [%thread] %-5level %logger{40}-%msg%n'
+server:
+  port: 7443
+  servlet:
+    context-path: /hris-service
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@172.16.21.12:1527:SCNLUAT1
+    username: HRMS
+    password: HRMS
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        enable_lazy_load_no_trans: true
+        proc:
+          param_null_passing: true
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+      use_sql_comments: true
+      format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  task:
+    scheduling:
+      pool:
+        size: 20
+  logging:
+    level:
+      org:
+        hibernate:
+          type: trace
+  mail:
+    default-encoding: UTF-8
+    host: mail.satincreditcare.com
+    username: testhrms@satincreditcare.com
+    password: Pass@4321
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        debug: true
+        transport:
+          protocol: smtp
+support.email: testhrms@satincreditcare.com
+satin-oauth2-url: http://172.16.20.12:8088/auth/token/verify_token
+oauth2-client-id: 045635eef6b517ebfc1af79f6a17048c
+oauth2-client-secret: 6af177c5f82e6a8a5eed62c24e3c53a2
+oauth2-resource-id: rest-services
+confirmation:
+  startbeforeday: 5
+temp:
+  directory: E:\office-work\hrms\hris-service\file\
+portal-base-url: https://worklifeuat.satincreditcare.com/
+gcp-bucket-name: hrms-satin
+cloud:
+  bucketName: hrms-satin
+  policiesBucket: hr-policies
+  hrTempSatin: hr-temp-satin
+  hrTempTaraashna: hr-temp-taraashna
+  taraashnaDir: Taraashna
+  satinDir: SatinCreditcare
+  employeeTempBucket: employee_temp_documents
+  serviceAccountFileLocation: satin.json
+  announcementsBucket: hris_announcemen
+hris:
+  abscondingLetter1: 1
+  abscondingLetter2: 7
+  abscondingDays: 3
+  abscondingDuration: 15
+  satinPayrollEmailId: shahzad.hussain@satincreditcare.com
+  taraashnaPayrollEmailId: shahzad.hussain@satincreditcare.com
+  satinBankUpdateEmailId: alok.rai@satincreditcare.com,shahzad.hussain@satincreditcare.com
+  taraashnaBankUpdateEmailId: alok.rai@satincreditcare.com,shahzad.hussain@satincreditcare.com
+  satinGratuityHandler: shahzad.hussain@satincreditcare.com
+  taraashnaGratuityHandler: shahzad.hussain@satincreditcare.com,hariom.singh@satincreditcare.com
+  payrollStatrtDate: 21
+
+initiatedFNF: 0 15 15 25 * *
